@@ -169,6 +169,10 @@ streamlit run app.py
 
 ---
 
+## 🚀 Live Demo
+
+https://crop-agent.streamlit.app/
+
 # 📸 Screenshots
 
 ## Home Page
