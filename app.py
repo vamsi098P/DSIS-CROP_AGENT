@@ -38,7 +38,9 @@ show_header()
 # Initialize Services
 # =====================================================
 
-agent = cropagent()
+agent = from core.agent_service import AgriMindAgent
+
+agent = AgriMindAgent()
 
 pdf_service = PDFService()
 
