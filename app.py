@@ -38,7 +38,7 @@ show_header()
 # Initialize Services
 # =====================================================
 
-agent = from core.agent_service import AgriMindAgent
+
 
 agent = AgriMindAgent()
 
