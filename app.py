@@ -19,7 +19,7 @@ from components.weather_card import show_weather_card
 # =====================================================
 
 st.set_page_config(
-    page_title="AgriMind AI",
+    page_title="DSIS CROP AGENT",
     page_icon="🌾",
     layout="wide"
 )
@@ -38,7 +38,7 @@ show_header()
 # Initialize Services
 # =====================================================
 
-agent = AgriMindAgent()
+agent = cropagent()
 
 pdf_service = PDFService()
 
@@ -75,7 +75,7 @@ if weather:
 
 if predict:
 
-    with st.spinner("🤖 AgriMind AI is analyzing your farm..."):
+    with st.spinner("🤖 crop agent is analyzing your farm..."):
 
         result = agent.analyze(
             nitrogen,
@@ -145,7 +145,7 @@ if predict:
         st.download_button(
             label="📄 Download AI Report",
             data=pdf_file,
-            file_name="AgriMind_Report.pdf",
+            file_name="Crop agent_Report.pdf",
             mime="application/pdf",
             use_container_width=True
         )
