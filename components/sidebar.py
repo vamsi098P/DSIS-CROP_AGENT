@@ -11,7 +11,7 @@ def show_sidebar():
         )
 
         st.markdown(
-            "<h2 style='text-align:center;'>AgriMind AI</h2>",
+            "<h2 style='text-align:center;'>DSIS CROPAGENT</h2>",
             unsafe_allow_html=True
         )
 
