@@ -29,9 +29,7 @@ st.set_page_config(
 # =====================================================
 
 load_css()
-
 show_sidebar()
-
 show_header()
 
 # =====================================================
@@ -64,11 +62,10 @@ history = HistoryService()
 ) = show_input_form()
 
 # =====================================================
-# Live Weather Card
+# Live Weather
 # =====================================================
 
 if weather:
-
     show_weather_card(weather)
 
 # =====================================================
@@ -77,7 +74,11 @@ if weather:
 
 if predict:
 
+<<<<<<< HEAD
     with st.spinner("🤖 crop agent is analyzing your farm..."):
+=======
+    with st.spinner("🤖 DSIS CROP AGENT is analyzing your farm..."):
+>>>>>>> 3e0fa66 (Fixed app.py deployment issue)
 
         result = agent.analyze(
             nitrogen,
@@ -89,15 +90,11 @@ if predict:
             rainfall
         )
 
-    # ================================================
-    # Show Results
-    # ================================================
+    # Show Result
 
     show_result(result)
 
-    # ================================================
-    # Save Prediction History
-    # ================================================
+    # Save History
 
     history.save_prediction(
         city=city,
@@ -105,9 +102,7 @@ if predict:
         confidence=result["confidence"]
     )
 
-    # ================================================
-    # Default Weather (if user didn't fetch weather)
-    # ================================================
+    # Default Weather
 
     if weather is None:
 
@@ -129,25 +124,23 @@ if predict:
 
         }
 
-    # ================================================
     # Generate PDF
-    # ================================================
 
     pdf_path = pdf_service.generate_report(
         result=result,
         weather=weather
     )
 
-    # ================================================
-    # Download PDF
-    # ================================================
-
     with open(pdf_path, "rb") as pdf_file:
 
         st.download_button(
             label="📄 Download AI Report",
             data=pdf_file,
+<<<<<<< HEAD
             file_name="Crop agent_Report.pdf",
+=======
+            file_name="DSIS_CROP_AGENT_Report.pdf",
+>>>>>>> 3e0fa66 (Fixed app.py deployment issue)
             mime="application/pdf",
             use_container_width=True
         )
@@ -165,13 +158,16 @@ history_data = history.get_history()
 if history_data:
 
     df = pd.DataFrame(
+
         history_data,
+
         columns=[
             "Date",
             "City",
             "Recommended Crop",
             "Confidence (%)"
         ]
+
     )
 
     st.dataframe(
@@ -183,7 +179,7 @@ if history_data:
 else:
 
     st.info("No prediction history available.")
-   
+
 # =====================================================
 # Developer Footer
 # =====================================================
@@ -192,66 +188,82 @@ st.markdown("---")
 
 st.markdown(
     """
-    <style>
-    .developer-footer{
-        background:#111827;
-        padding:25px;
-        border-radius:15px;
-        text-align:center;
-        border-top:4px solid #22C55E;
-        margin-top:30px;
-    }
+<style>
 
-    .developer-footer h3{
-        color:#22C55E;
-        margin-bottom:10px;
-    }
+.developer-footer{
 
-    .developer-footer h4{
-        color:white;
-        margin-bottom:5px;
-    }
+background:#111827;
 
-    .developer-footer p{
-        color:#D1D5DB;
-        margin:4px;
-    }
+padding:25px;
 
-    .developer-footer a{
-        color:#60A5FA;
-        text-decoration:none;
-    }
-    </style>
+border-radius:15px;
 
-    <div class="developer-footer">
+text-align:center;
 
-    <h3>👨‍💻 Developed By</h3>
+border-top:4px solid #22C55E;
 
-    <h4>Vamsi Garapati</h4>
+margin-top:30px;
 
-    <p>B.Tech – Computer Science & Data Science</p>
+}
 
-    <p>NRI Institute of Technology</p>
+.developer-footer h3{
 
-    <p>📧 vamsigarapati40@gmail.com</p>
+color:#22C55E;
 
-    <p>
-        💼
-        <a href="https://www.linkedin.com/in/vamsi-garapati-36ab4632b" target="_blank">
-        LinkedIn
-        </a>
+}
 
-        
+.developer-footer h4{
 
-        
+color:white;
 
-    
+}
 
-    <p>🌾 DSIS CROP AGENT v1.0</p>
+.developer-footer p{
 
-    <p>AI-Powered Smart Crop Recommendation System</p>
+color:#D1D5DB;
 
-    </div>
-    """,
+margin:6px;
+
+}
+
+.developer-footer a{
+
+color:#60A5FA;
+
+text-decoration:none;
+
+}
+
+</style>
+
+<div class="developer-footer">
+
+<h3>👨‍💻 Developed By</h3>
+
+<h4>Vamsi Garapati</h4>
+
+<p>B.Tech – Computer Science & Data Science</p>
+
+<p>NRI Institute of Technology</p>
+
+<p>📧 vamsigarapati40@gmail.com</p>
+
+<p>
+
+💼
+<a href="https://www.linkedin.com/in/vamsi-garapati-36ab4632b" target="_blank">
+
+LinkedIn
+
+</a>
+
+
+
+<p>🌾 DSIS CROP AGENT v1.0</p>
+
+<p>AI-Powered Smart Crop Recommendation System</p>
+
+</div>
+""",
     unsafe_allow_html=True
 )
