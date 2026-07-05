@@ -1,11 +1,11 @@
+import streamlit as st
 import requests
-from config import WEATHER_API_KEY
 
 
 class WeatherService:
 
     def __init__(self):
-        self.api_key = WEATHER_API_KEY
+        self.api_key = st.secrets["WEATHER_API_KEY"]
 
     def get_weather(self, city):
 
@@ -19,15 +19,12 @@ class WeatherService:
         response = requests.get(url)
 
         if response.status_code != 200:
-
             print(response.text)
-
             return None
 
         data = response.json()
 
         current = data["current"]
-
         location = data["location"]
 
         return {
