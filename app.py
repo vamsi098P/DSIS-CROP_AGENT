@@ -36,12 +36,8 @@ show_header()
 # Initialize Services
 # =====================================================
 
-
-
 agent = AgriMindAgent()
-
 pdf_service = PDFService()
-
 history = HistoryService()
 
 # =====================================================
@@ -62,23 +58,19 @@ history = HistoryService()
 ) = show_input_form()
 
 # =====================================================
-# Live Weather
+# Weather Card
 # =====================================================
 
 if weather:
     show_weather_card(weather)
 
 # =====================================================
-# AI Prediction
+# Prediction
 # =====================================================
 
 if predict:
 
-<<<<<<< HEAD
-    with st.spinner("🤖 crop agent is analyzing your farm..."):
-=======
     with st.spinner("🤖 DSIS CROP AGENT is analyzing your farm..."):
->>>>>>> 3e0fa66 (Fixed app.py deployment issue)
 
         result = agent.analyze(
             nitrogen,
@@ -90,19 +82,13 @@ if predict:
             rainfall
         )
 
-    # Show Result
-
     show_result(result)
-
-    # Save History
 
     history.save_prediction(
         city=city,
         crop=result["recommended_crop"],
         confidence=result["confidence"]
     )
-
-    # Default Weather
 
     if weather is None:
 
@@ -124,8 +110,6 @@ if predict:
 
         }
 
-    # Generate PDF
-
     pdf_path = pdf_service.generate_report(
         result=result,
         weather=weather
@@ -136,15 +120,10 @@ if predict:
         st.download_button(
             label="📄 Download AI Report",
             data=pdf_file,
-<<<<<<< HEAD
-            file_name="Crop agent_Report.pdf",
-=======
             file_name="DSIS_CROP_AGENT_Report.pdf",
->>>>>>> 3e0fa66 (Fixed app.py deployment issue)
             mime="application/pdf",
             use_container_width=True
         )
-
 # =====================================================
 # Prediction History
 # =====================================================
@@ -158,16 +137,13 @@ history_data = history.get_history()
 if history_data:
 
     df = pd.DataFrame(
-
         history_data,
-
         columns=[
             "Date",
             "City",
             "Recommended Crop",
             "Confidence (%)"
         ]
-
     )
 
     st.dataframe(
@@ -191,47 +167,33 @@ st.markdown(
 <style>
 
 .developer-footer{
-
-background:#111827;
-
-padding:25px;
-
-border-radius:15px;
-
-text-align:center;
-
-border-top:4px solid #22C55E;
-
-margin-top:30px;
-
+    background:#111827;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    border-top:4px solid #22C55E;
+    margin-top:30px;
 }
 
 .developer-footer h3{
-
-color:#22C55E;
-
+    color:#22C55E;
+    margin-bottom:10px;
 }
 
 .developer-footer h4{
-
-color:white;
-
+    color:white;
+    margin-bottom:5px;
 }
 
 .developer-footer p{
-
-color:#D1D5DB;
-
-margin:6px;
-
+    color:#D1D5DB;
+    margin:5px;
 }
 
 .developer-footer a{
-
-color:#60A5FA;
-
-text-decoration:none;
-
+    color:#60A5FA;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 </style>
@@ -249,12 +211,9 @@ text-decoration:none;
 <p>📧 vamsigarapati40@gmail.com</p>
 
 <p>
-
 💼
 <a href="https://www.linkedin.com/in/vamsi-garapati-36ab4632b" target="_blank">
-
 LinkedIn
-
 </a>
 
 
@@ -264,6 +223,7 @@ LinkedIn
 <p>AI-Powered Smart Crop Recommendation System</p>
 
 </div>
+
 """,
     unsafe_allow_html=True
 )
