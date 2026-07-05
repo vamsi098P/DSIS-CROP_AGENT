@@ -25,3 +25,9 @@ AgriMind_Report.pdf
 # OS Files
 .DS_Store
 Thumbs.db
+
+# Ignore generated PDF reports
+*.pdf
+
+# Ignore SQLite database
+database/*.db
